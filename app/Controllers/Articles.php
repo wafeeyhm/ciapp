@@ -29,4 +29,9 @@ class Articles extends BaseController
             "article" => $data
         ]);
     }
+
+    public function new()
+    {
+        return view("Articles/new");
+    }
 }

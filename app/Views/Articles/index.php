@@ -6,6 +6,8 @@
 
 <h1>Articles section</h1>
 
+<p><a href="<?= url_to("Articles::new") ?>">Add new article</a></p>
+
 <?php foreach ($articles as $article): ?>
 
 <article>
