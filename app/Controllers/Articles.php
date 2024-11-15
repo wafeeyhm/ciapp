@@ -34,4 +34,9 @@ class Articles extends BaseController
     {
         return view("Articles/new");
     }
+
+    public function create()
+    {
+        dd($this->request->getPost());
+    }
 }
