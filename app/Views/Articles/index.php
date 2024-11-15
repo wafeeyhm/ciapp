@@ -9,7 +9,7 @@
 <?php foreach ($articles as $article): ?>
 
 <article>
-    <h2><?= $article["title"] ?></h2>
+    <a href="<?= site_url('/articles/'. $article["id"]) ?>"><h2><?= $article["title"] ?></h2></a>
     <p><?= $article["content"] ?></p>
 </article>
 
