@@ -14,4 +14,11 @@ class ArticleModel extends Model
         "title" => "required|max_length[128]",
         "content" => "required"
     ];
+
+    protected $validationMessages = [
+        "title" => [
+            "required" => "Please enter the title",
+            "max_length" => "{param} maximum characters for the {field}"
+        ]
+    ];
 }
