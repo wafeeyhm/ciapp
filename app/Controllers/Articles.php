@@ -16,4 +16,17 @@ class Articles extends BaseController
             "articles" => $data
         ]);
     }
+
+    public function show($id)
+    {
+        $model = new ArticleModel();
+
+        $data = $model->find($id);
+
+        // dd($data);
+
+        return view("Articles/show", [
+            "article" => $data
+        ]);
+    }
 }
