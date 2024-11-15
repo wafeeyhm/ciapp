@@ -8,6 +8,18 @@
 
 <?= form_open("articles/create") ?>
 
+<?php if(session()->has("errors")): ?>
+
+<div class="alert alert-warning">
+    <ul>
+        <?php foreach(session("errors") as $error): ?>
+            <li><?= $error ?></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php endif; ?>
+
 <div class="mb-3">
     <label for="title" class="form-label">
         Title
