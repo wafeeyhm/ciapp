@@ -48,6 +48,6 @@ class Articles extends BaseController
             
         }
 
-        dd($id);
+        return redirect()->to("/articles/$id")->with("message", "Article saved");
     }
 }

@@ -50,7 +50,17 @@
 
     <!-- Main Section -->
     <main class="container my-5">
+
+        <?php if(session()->has("message")): ?>
+
+            <div class="alert alert-success">
+                <?= session("message") ?>
+            </div>
+
+        <?php endif; ?>
+
         <?= $this->renderSection("content") ?>
+    
     </main>
 
     <!-- Footer -->
