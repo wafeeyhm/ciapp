@@ -6,7 +6,7 @@
 
 <h1>Edit Article</h1>
 
-<?= form_open("articles/update/" . $article["id"]) ?>
+<?= form_open("articles/update/" . $article->id) ?>
 
 <?= $this->include("Articles/form") ?>
 
