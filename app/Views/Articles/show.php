@@ -8,4 +8,6 @@
 
 <p><?= esc($article["content"]) ?></p>
 
+<p><a href="<?= url_to("Articles::edit", $article["id"]) ?>">Edit article</a></p>
+
 <?= $this->endSection() ?>

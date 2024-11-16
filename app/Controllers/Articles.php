@@ -50,4 +50,29 @@ class Articles extends BaseController
 
         return redirect()->to("/articles/$id")->with("message", "Article saved");
     }
+
+    public function edit($id)
+    {
+        $model = new ArticleModel();
+
+        $data = $model->find($id);
+
+        // dd($data);
+
+        return view("Articles/edit", [
+            "article" => $data
+        ]);
+    }
+
+    public function update($id)
+    {
+        $model = new ArticleModel();
+
+        if($model->update($id, $this->request->getPost()))
+        {
+            return redirect()->to("/articles/$id")->with("message", "Article updated");
+        }
+
+        return redirect()->back()->with("errors", $model->errors())->withInput();
+    }
 }
