@@ -99,6 +99,13 @@ class Articles extends BaseController
     {
         $data = $this->getArticleOr404($id);
 
+        if ($this->request->is("post")) {
+            # code...
+            $this->model->delete("id");
+
+            return redirect()->to("/articles")->with("message", "Article deleted");
+        }
+
         return view("Articles/delete", [
             "article" => $data
         ]);
