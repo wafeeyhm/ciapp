@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ArticleModel;
 use App\Entities\Article;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Articles extends BaseController
 {
@@ -28,12 +29,17 @@ class Articles extends BaseController
     public function show($id)
     {
 
-        $data = $this->model->find($id);
+        $response = $this->model->find($id);
+
+        if ($response === null) {
+            # code...
+            throw new PageNotFoundException("Article with id $id not found");
+        }
 
         // dd($data);
 
         return view("Articles/show", [
-            "article" => $data
+            "article" => $response
         ]);
     }
 
@@ -92,5 +98,17 @@ class Articles extends BaseController
         }
 
         return redirect()->back()->with("errors", $this->model->errors())->withInput();
+    }
+
+    private function getArticleOr404($id): Article
+    {
+        $response = $this->model->find($id);
+
+        if ($response === null) {
+            # code...
+            throw new PageNotFoundException("Article with id $id not found");
+        }
+
+        return $response;
     }
 }
