@@ -29,17 +29,12 @@ class Articles extends BaseController
     public function show($id)
     {
 
-        $response = $this->model->find($id);
-
-        if ($response === null) {
-            # code...
-            throw new PageNotFoundException("Article with id $id not found");
-        }
+        $data = $this->getArticleOr404($id);
 
         // dd($data);
 
         return view("Articles/show", [
-            "article" => $response
+            "article" => $data
         ]);
     }
 
@@ -70,7 +65,7 @@ class Articles extends BaseController
     public function edit($id)
     {
 
-        $data = $this->model->find($id);
+        $data = $this->getArticleOr404($id);
 
         // dd($data);
 
@@ -82,7 +77,7 @@ class Articles extends BaseController
     public function update($id)
     {
 
-        $article = $this->model->find($id);
+        $article = $this->getArticleOr404($id);
 
         $article->fill($this->request->getPost());
 
