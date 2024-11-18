@@ -77,22 +77,31 @@ class Articles extends BaseController
     public function update($id)
     {
 
-        $article = $this->getArticleOr404($id);
+        $data = $this->getArticleOr404($id);
 
-        $article->fill($this->request->getPost());
+        $data->fill($this->request->getPost());
 
-        if ( ! $article->hasChanged())
+        if ( ! $data->hasChanged())
         {
             # code...
             return redirect()->back()->with("message", "Nothing to update.");
         }
 
-        if($this->model->save($article))
+        if($this->model->save($data))
         {
             return redirect()->to("/articles/$id")->with("message", "Article updated");
         }
 
         return redirect()->back()->with("errors", $this->model->errors())->withInput();
+    }
+
+    public function delete($id)
+    {
+        $data = $this->getArticleOr404($id);
+
+        return view("Articles/delete", [
+            "article" => $data
+        ]);
     }
 
     private function getArticleOr404($id): Article
@@ -106,4 +115,5 @@ class Articles extends BaseController
 
         return $response;
     }
+    
 }

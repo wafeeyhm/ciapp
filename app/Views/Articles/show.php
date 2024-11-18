@@ -8,6 +8,8 @@
 
 <p><?= esc($article->content) ?></p>
 
-<p><a href="<?= url_to("Articles::edit", $article->id) ?>">Edit article</a></p>
+<a href="<?= url_to("Articles::edit", $article->id) ?>"><p class="btn btn-warning">Edit article</p></a>
+
+<a href="<?= url_to("Articles::delete", $article->id) ?>"><p class="btn btn-danger">Delete article</p></a>
 
 <?= $this->endSection() ?>
